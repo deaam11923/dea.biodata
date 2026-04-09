@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata – Dea Warhangan</title>
+
+  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0d1b2e;
+      --navy-mid:   #1a2e4a;
+      --blue:       #2155a3;
+      --blue-light: #3b76cc;
+      --gold:       #c9a84c;
+      --gold-light: #e8c97a;
+      --cream:      #f7f3ed;
+      --white:      #ffffff;
+      --gray-100:   #f0f4f9;
+      --gray-200:   #dce5f0;
+      --gray-400:   #8a9ab5;
+      --text:       #1c2b3a;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 780px;
+      background: var(--white);
+      box-shadow: 0 20px 60px rgba(13,27,46,.18), 0 4px 16px rgba(13,27,46,.10);
+      border-radius: 16px;
+      overflow: hidden;
+      animation: fadeUp .6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
+      padding: 48px 52px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,.25);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 30px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .header-inner { position: relative; z-index: 1; }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.35);
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: .01em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .04em;
+    }
+
+    .gold-line {
+      width: 52px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin: 16px 0 0;
+    }
+
+    .body { padding: 40px 52px 48px; }
+
+    .section { margin-bottom: 36px; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue-light), transparent);
+      opacity: .4;
+    }
+
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table tr { transition: background .15s; }
+    .data-table tr:hover td { background: var(--gray-100); }
+    .data-table td {
+      padding: 10px 14px;
+      font-size: 14px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .td-label {
+      width: 38%;
+      font-weight: 600;
+      color: var(--navy-mid);
+      padding-left: 0;
+    }
+    .data-table .td-sep {
+      width: 5%;
+      color: var(--blue);
+      font-weight: 600;
+      text-align: center;
+    }
+    .data-table .td-value { color: var(--text); font-weight: 400; }
+
+    .pill-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      padding: 3px 12px 3px 8px;
+      font-size: 13px;
+    }
+
+    .edu-list { display: flex; flex-direction: column; gap: 12px; }
+    .edu-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px 20px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .edu-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(13,27,46,.09);
+    }
+    .edu-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+    .edu-icon.univ { background: linear-gradient(135deg, var(--blue), var(--blue-light)); }
+    .edu-icon.smk  { background: linear-gradient(135deg, #b8622a, #e08a4a); }
+    .edu-info { flex: 1; }
+    .edu-name { font-weight: 600; font-size: 14px; color: var(--navy-mid); margin-bottom: 2px; }
+    .edu-school { font-size: 12.5px; color: var(--gray-400); }
+    .edu-badge {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .06em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .badge-active { background: rgba(33,85,163,.12); color: var(--blue); border: 1px solid rgba(33,85,163,.25); }
+    .badge-done   { background: rgba(201,168,76,.15); color: #8a6400; border: 1px solid rgba(201,168,76,.4); }
+
+    .statement {
+      background: linear-gradient(135deg, var(--gray-100), #eef2f8);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .sig-row { display: flex; justify-content: flex-end; margin-top: 36px; }
+    .sig-box { text-align: center; min-width: 200px; }
+    .sig-date { font-size: 13px; color: var(--gray-400); margin-bottom: 4px; }
+    .sig-role { font-size: 13px; color: var(--text); margin-bottom: 52px; }
+    .sig-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px; font-weight: 700;
+      color: var(--navy-mid);
+      border-top: 1.5px solid var(--navy-mid);
+      padding-top: 8px;
+    }
+
+    .footer {
+      background: var(--navy);
+      padding: 14px 52px;
+      text-align: center;
+      font-size: 11.5px;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .04em;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+    }
+
+    @media (max-width: 520px) {
+      .header, .body { padding-left: 24px; padding-right: 24px; }
+      .footer { padding-left: 24px; padding-right: 24px; }
+      .data-table .td-label { width: 44%; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<article class="page">
+
+  <header class="header">
+    <div class="header-inner">
+      <span class="tag">Biodata Diri</span>
+      <h1 class="name">Dea Warhangan</h1>
+      <p class="subtitle">Mahasiswi S1 Ilmu Komputer &nbsp;·&nbsp; Universitas Pattimura</p>
+      <div class="gold-line"></div>
+    </div>
+  </header>
+
+  <main class="body">
+
+    <section class="section">
+      <h2 class="section-title">Data Pribadi</h2>
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <td class="td-label">Nama Lengkap</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Dea Warhangan</td>
+          </tr>
+          <tr>
+            <td class="td-label">Tempat, Tanggal Lahir</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Wailihang, 12 Agustus 2005</td>
+          </tr>
+          <tr>
+            <td class="td-label">Jenis Kelamin</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Perempuan</td>
+          </tr>
+          <tr>
+            <td class="td-label">Agama</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Islam</td>
+          </tr>
+          <tr>
+            <td class="td-label">Kewarganegaraan</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Indonesia</td>
+          </tr>
+          <tr>
+            <td class="td-label">Alamat</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">Desa Wailihang</td>
+          </tr>
+          <tr>
+            <td class="td-label">No. HP</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">
+              <span class="pill-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2155a3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                085257644615
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">Email</td>
+            <td class="td-sep">:</td>
+            <td class="td-value">
+              <span class="pill-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2155a3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                deaam11923@gmail.com
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+  <h2 class="section-title">Riwayat Pendidikan</h2>
+  <div class="edu-list">
+
+    <div class="edu-card">
+      <div class="edu-icon" style="background: linear-gradient(135deg, #4CAF50, #81C784);">📚</div>
+      <div class="edu-info">
+        <p class="edu-name">SD N 1 Waplau</p>
+        <p class="edu-school">Sekolah Dasar</p>
+      </div>
+      <span class="edu-badge badge-done">Lulus</span>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon" style="background: linear-gradient(135deg, #2196F3, #64B5F6);">📘</div>
+      <div class="edu-info">
+        <p class="edu-name">SMP N 15 Buru</p>
+        <p class="edu-school">Sekolah Menengah Pertama</p>
+      </div>
+      <span class="edu-badge badge-done">Lulus</span>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon" style="background: linear-gradient(135deg, #FF9800, #FFB74D);">🏫</div>
+      <div class="edu-info">
+        <p class="edu-name">SMK Alhilaal Namlea</p>
+        <p class="edu-school">Sekolah Menengah Kejuruan</p>
+      </div>
+      <span class="edu-badge badge-done">Lulus</span>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon" style="background: linear-gradient(135deg, #6A1B9A, #AB47BC);">🎓</div>
+      <div class="edu-info">
+        <p class="edu-name">S1 Ilmu Komputer</p>
+        <p class="edu-school">Universitas Pattimura</p>
+      </div>
+      <span class="edu-badge badge-active">Sedang Ditempuh</span>
+    </div>
+
+  </div>
+</section>
+
+    <section class="section">
+      <h2 class="section-title">Pernyataan</h2>
+      <blockquote class="statement">
+        Saya yang bertanda tangan di bawah ini menyatakan bahwa semua informasi yang tercantum
+        dalam biodata ini adalah benar dan dapat dipertanggungjawabkan. Saya bersedia memberikan
+        keterangan lebih lanjut apabila diperlukan.
+      </blockquote>
+    </section>
+
+    <div class="sig-row">
+      <div class="sig-box">
+        <p class="sig-date">Ambon, Maret 2026</p>
+        <p class="sig-role">Yang Membuat Pernyataan,</p>
+        <p class="sig-name">Dea Warhangan</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    Biodata ini dibuat untuk keperluan lamaran beasiswa / pekerjaan
+  </footer>
+
+</article>
+
+</body>
+</html>
